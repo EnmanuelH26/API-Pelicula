@@ -1,0 +1,22 @@
+
+builder.Services.AddDbContext<AplicationDbContext>
+(opciones => opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
+
+
+builder.Services.AddDbContext<AplicationDbContext>:
+Este método se utiliza para registrar ApplicationDbContext 
+como un servicio en el contenedor de inyección de dependencias
+(Dependency Injection, DI) de ASP.NET Core. ApplicationDbContext
+es una clase que hereda de DbContext y representa una sesión con la base de datos,
+permitiendo consultas y operaciones de guardado.
+
+opciones => opciones.UseSqlServer(...): Esta expresión lambda configura ApplicationDbContext
+para usar SQL Server como el proveedor de la base de datos.
+
+builder.Configuration.GetConnectionString("ConexionSql"):
+Obtiene la cadena de conexión a la base de datos desde el archivo
+de configuración (por ejemplo, appsettings.json).
+
+La cadena de conexión suele incluir detalles como la
+dirección del servidor, la base de datos a 
+la que se debe conectar y las credenciales de acceso.

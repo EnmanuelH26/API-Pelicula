@@ -1,0 +1,13 @@
+Un DTO es un objeto  que define como se enviaran los datos a traves de la reds
+
+--Ventajas
+
+Oculta propiedades que los clientes no deben ver
+
+Omite algunas propiedades con el fin de reducir tamanio de la carga
+
+Desacople de la capa de servicios de nivel de bd
+
+control sobre los atributos que recibe cuando se cree un nuevo recurso o actualice
+
+puede tener diferentes DTO versiones para cada API
