@@ -59,10 +59,10 @@ namespace ApiPelicula.Repositorio
             return false;
         }
 
-        public static string obtenermd5(string valor)
+        public static string obtenermd5(string dato)
         {
             MD5CryptoServiceProvider x = new MD5CryptoServiceProvider();
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(valor);
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(dato);
             data = x.ComputeHash(data);
             string resp = "";
             for (int i = 0; i < data.Length; i++)
