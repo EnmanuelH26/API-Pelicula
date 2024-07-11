@@ -126,6 +126,8 @@ namespace ApiPelicula.Controllers
                 return BadRequest(ModelState);
             }
 
+            
+
             //instanciamos una variable que mapea categoria con el parametro ccdto 
             var categoria = _mapper.Map<Categoria>(ccdto);
 

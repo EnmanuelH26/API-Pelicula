@@ -69,7 +69,7 @@ namespace ApiPelicula.Repositorio
 
         public ICollection<Categoria> GetCategorias()
         {
-            return _db.Categoria.OrderBy(c => c.NombreCategoria).ToList(); //aqui lo ordenamos por nombre de categoria y lo mandamos como una lista ya que el ICollection es para listas
+            return _db.Categoria.OrderBy(c => c.Id).ToList(); //aqui lo ordenamos por nombre de categoria y lo mandamos como una lista ya que el ICollection es para listas
         }
 
         public bool GuardarCategoria()

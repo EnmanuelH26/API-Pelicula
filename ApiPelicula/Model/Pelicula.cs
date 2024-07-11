@@ -8,7 +8,7 @@ namespace ApiPelicula.Model
 
         [Key]
         public int Id { get; set; }
-        public string NombrePelicula { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public int Duracion { get; set; }
         public string RutaImg  { get; set; }
@@ -23,6 +23,6 @@ namespace ApiPelicula.Model
         //relacion con categoria
         public int categoriaId  { get; set; }
         [ForeignKey("categoriaId")]
-        public Categoria categoria { get; set; }
+        public Categoria Categoria { get; set; }
     }
 }

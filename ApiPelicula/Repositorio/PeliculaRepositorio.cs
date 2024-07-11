@@ -1,6 +1,7 @@
 ﻿using ApiPelicula.Data;
 using ApiPelicula.Model;
 using ApiPelicula.Repositorio.IRepositorio;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiPelicula.Repositorio
 {
@@ -14,11 +15,24 @@ namespace ApiPelicula.Repositorio
         {
             _db = db; //para acceder a cualquiera de las entidades
         }
-        public bool ActualizarCategoria(Pelicula pelicula)
+        public bool ActualizarPelicula(Pelicula pelicula)
         {
             pelicula.FechaCreacion = DateTime.Now; //para darle la fecha actual
-            
-            _db.Pelicula.Update(pelicula); //actualizamos la bd con el metodo update y le pasamos la categoria
+
+            //
+            var peliculaExistente = _db.Pelicula.Find(pelicula.Id); //esto es para encontrar si la categoria existe en la db
+
+
+            if (peliculaExistente != null)
+            {
+                _db.Entry(peliculaExistente).CurrentValues.SetValues(pelicula);
+            }
+            else
+            {
+                _db.Pelicula.Update(pelicula); //actualizamos la bd con el metodo update y le pasamos la categoria
+
+            }
+
             return GuardarPelicula(); //metodo guardar
         }
 
@@ -43,7 +57,7 @@ namespace ApiPelicula.Repositorio
 
         public bool ExistePelicula(string nombre)
         {
-            return _db.Pelicula.Any(c => c.NombrePelicula.ToLower().Trim() == nombre.ToLower().Trim()); //valiamos si el nombre existe
+            return _db.Pelicula.Any(c => c.Nombre.ToLower().Trim() == nombre.ToLower().Trim()); //valiamos si el nombre existe
                                                                                                           //en la bd conel metodo Any y con
                                                                                                           //el metodo Trim eliminamos
                                                                                                           //los espacios en blanco
@@ -54,9 +68,9 @@ namespace ApiPelicula.Repositorio
             return _db.Pelicula.FirstOrDefault(c => c.Id == peliculaId); //aqui busca la primera categoria que coincida. el metodo FirstOrDefault hace que busques un id en espesifico
         }
 
-        public ICollection<Pelicula> GetCategorias()
+        public ICollection<Pelicula> GetPeliculas()
         {
-            return _db.Pelicula.OrderBy(c => c.NombrePelicula).ToList(); //aqui lo ordenamos por nombre de categoria y lo mandamos como una lista ya que el ICollection es para listas
+            return _db.Pelicula.OrderBy(c => c.Nombre).ToList(); //aqui lo ordenamos por nombre de categoria y lo mandamos como una lista ya que el ICollection es para listas
         }
 
         public bool GuardarPelicula()
@@ -65,25 +79,20 @@ namespace ApiPelicula.Repositorio
                                                          // reciba algo mayor a 0 es decir si se guardan
                                                          // los cambios en el metodo AcualizarCategoria, recibira un 1 de lo contrario dara 0
         }
-
-        public ICollection<Pelicula> GetPeliculas()
+        public ICollection<Pelicula> GetPeliculasEnCategoria(int categoriaId)
         {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<Pelicula> GetPeliculasEnCategoria(int catId)
-        {
-            throw new NotImplementedException();
+            return _db.Pelicula.Include(ca => ca.Categoria).Where(ca => ca.categoriaId == categoriaId).ToList();
         }
 
         public IEnumerable<Pelicula> BuscarPelicula(string buscarPelicula)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool ActualizarPelicula(Pelicula pelicula)
-        {
-            throw new NotImplementedException();
+            //para buscar peliculas por categoria
+            IQueryable<Pelicula> query = _db.Pelicula;
+            if (!string.IsNullOrEmpty(buscarPelicula))
+            {
+                query = query.Where(e => e.Nombre.Contains(buscarPelicula) || e.Descripcion.Contains(buscarPelicula));
+            }
+            return query.ToList();
         }
     }
 }

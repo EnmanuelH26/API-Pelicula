@@ -18,5 +18,5 @@ namespace ApiPelicula.PeliculasMaper
             CreateMap<Pelicula, CrearPeliculaDTO>().ReverseMap(); //Lo mismo para el modelo de CrearCategoria DTO
         }
     }
-    }
+    
 }

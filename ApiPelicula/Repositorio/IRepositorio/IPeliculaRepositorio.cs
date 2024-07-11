@@ -7,7 +7,7 @@ namespace ApiPelicula.Repositorio.IRepositorio
     {
         //metodo ICollecion para que nos traiga la lista
         ICollection<Pelicula> GetPeliculas(); //Todas las Peliculas
-        ICollection<Pelicula> GetPeliculasEnCategoria(int catId); //Todas las Peliculas en una categoria
+        ICollection<Pelicula> GetPeliculasEnCategoria(int categoriaId); //Todas las Peliculas en una categoria
 
         IEnumerable<Pelicula> BuscarPelicula(string buscarPelicula);
 
