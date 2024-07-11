@@ -50,8 +50,7 @@
               "RelativeToolTip": "ApiPelicula\\Model\\Dtos\\UsuarioLoginRespuestaDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T12:12:58.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T12:12:58.842Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "ApiPelicula\\Model\\Dtos\\UsuarioLoginDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T12:07:11.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T12:07:11.643Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "ApiPelicula\\Repositorio\\PeliculaRepositorio.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T01:01:51.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T01:01:51.197Z"
             },
             {
               "$type": "Document",
@@ -87,7 +84,7 @@
               "RelativeDocumentMoniker": "ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
               "RelativeToolTip": "ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAYwEYAAAAQAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAswEMAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-11T01:01:23.699Z",
               "EditorCaption": ""
@@ -102,8 +99,7 @@
               "RelativeToolTip": "ApiPelicula\\Repositorio\\IRepositorio\\IUsuarioRepositorio.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T00:57:19.066Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T00:57:19.066Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "ApiPelicula\\Model\\Dtos\\UsuarioRegistroDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T12:12:14.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T12:12:14.368Z"
             },
             {
               "$type": "Document",
@@ -128,8 +123,7 @@
               "RelativeToolTip": "ApiPelicula\\Model\\Dtos\\UsuarioDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T12:10:32.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T12:10:32.871Z"
             }
           ]
         }
