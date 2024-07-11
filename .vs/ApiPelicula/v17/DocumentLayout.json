@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|c:\\users\\lenovo\\desktop\\practica de apis\\apipelicula\\apipelicula\\repositorio\\usuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|solutionrelative:apipelicula\\repositorio\\usuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|c:\\users\\lenovo\\desktop\\practica de apis\\apipelicula\\apipelicula\\repositorio\\irepositorio\\iusuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|solutionrelative:apipelicula\\repositorio\\irepositorio\\iusuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|c:\\users\\lenovo\\desktop\\practica de apis\\apipelicula\\apipelicula\\repositorio\\pelicularepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|solutionrelative:apipelicula\\repositorio\\pelicularepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|c:\\users\\lenovo\\desktop\\practica de apis\\apipelicula\\apipelicula\\controllers\\peliculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|solutionrelative:apipelicula\\controllers\\peliculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|c:\\users\\lenovo\\desktop\\practica de apis\\apipelicula\\apipelicula\\model\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F6E85E-6F1B-4DC5-8037-EEE9CFB27CFC}|ApiPelicula\\ApiPelicula.csproj|solutionrelative:apipelicula\\model\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Pelicula.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Model\\Pelicula.cs",
-              "RelativeDocumentMoniker": "ApiPelicula\\Model\\Pelicula.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Model\\Pelicula.cs",
-              "RelativeToolTip": "ApiPelicula\\Model\\Pelicula.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T23:51:30.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "PeliculaRepositorio.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\PeliculaRepositorio.cs",
               "RelativeDocumentMoniker": "ApiPelicula\\Repositorio\\PeliculaRepositorio.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\PeliculaRepositorio.cs",
               "RelativeToolTip": "ApiPelicula\\Repositorio\\PeliculaRepositorio.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAmwFkAAAA2AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T23:51:01.273Z",
+              "WhenOpened": "2024-07-11T01:01:51.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsuarioRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
+              "RelativeDocumentMoniker": "ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
+              "RelativeToolTip": "ApiPelicula\\Repositorio\\UsuarioRepositorio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T01:01:23.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PeliculasController.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Controllers\\PeliculasController.cs",
-              "RelativeDocumentMoniker": "ApiPelicula\\Controllers\\PeliculasController.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Controllers\\PeliculasController.cs",
-              "RelativeToolTip": "ApiPelicula\\Controllers\\PeliculasController.cs",
-              "ViewState": "AQIAAMUAAAAAAAAAAAAQwNEAAAA3AAAA",
+              "Title": "IUsuarioRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\IRepositorio\\IUsuarioRepositorio.cs",
+              "RelativeDocumentMoniker": "ApiPelicula\\Repositorio\\IRepositorio\\IUsuarioRepositorio.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\Repositorio\\IRepositorio\\IUsuarioRepositorio.cs",
+              "RelativeToolTip": "ApiPelicula\\Repositorio\\IRepositorio\\IUsuarioRepositorio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T23:22:11.806Z",
+              "WhenOpened": "2024-07-11T00:57:19.066Z",
               "EditorCaption": ""
             }
           ]
