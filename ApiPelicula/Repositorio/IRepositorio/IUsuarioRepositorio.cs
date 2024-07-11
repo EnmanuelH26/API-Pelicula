@@ -14,6 +14,6 @@ namespace ApiPelicula.Repositorio.IRepositorio
         //si existe la categoria por id
         bool UnicoUsuario(string usuario);
         Task<UsuarioLoginRespuestaDTO> Login(UsuarioLoginDTO usuarioLoginDTO);
-        Task<UsuarioDatosDTO> Registro(UsuarioRegistroDTO usuarioRegistroDTO);
+        Task<Usuario> Registro(UsuarioRegistroDTO usuarioRegistroDTO);
     }
 }

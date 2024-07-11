@@ -2,6 +2,7 @@
 using ApiPelicula.Model;
 using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
+using XSystem.Security.Cryptography;
 
 namespace ApiPelicula.Repositorio
 {
@@ -28,10 +29,24 @@ namespace ApiPelicula.Repositorio
             throw new NotImplementedException();
         }
 
-        public Task<UsuarioDatosDTO> Registro(UsuarioRegistroDTO usuarioRegistroDTO)
+        public async Task<Usuario> Registro(UsuarioRegistroDTO usuarioRegistroDTO)
         {
-            throw new NotImplementedException();
+            var passwordEncriptado = obtenermd5(usuarioRegistroDTO.Password);
+
+            Usuario usuario = new()
+            {
+                NombreUsuario = usuarioRegistroDTO.NombreUsuario,
+                Password = passwordEncriptado,
+                Nombre = usuarioRegistroDTO.Nombre,
+                Role = usuarioRegistroDTO.Role
+            };
+            _db.Add(usuario);   
+            await _db.SaveChangesAsync();
+            usuario.Password = passwordEncriptado; //para que lo devuelva encriptado
+            return usuario;
+
         }
+
 
         public bool UnicoUsuario(string usuario)
         {
@@ -43,5 +58,20 @@ namespace ApiPelicula.Repositorio
             }
             return false;
         }
+
+        public static string obtenermd5(string valor)
+        {
+            MD5CryptoServiceProvider x = new MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(valor);
+            data = x.ComputeHash(data);
+            string resp = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                resp += data[i].ToString("2").ToLower();
+                
+            }
+            return resp;
+        }
     }
+    
 }

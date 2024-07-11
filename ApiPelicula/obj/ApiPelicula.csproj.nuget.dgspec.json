@@ -74,6 +74,10 @@
             "System.Diagnostics.Tools": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "XAct.Core.PCL": {
+              "target": "Package",
+              "version": "[0.0.5014, )"
             }
           },
           "imports": [
