@@ -11,7 +11,7 @@ namespace ApiPelicula.Repositorio.IRepositorio
         //Metodo para obtener una sola categoria
         Usuario GetUsuario(int UsuarioId); //una sola categoria
         
-        //si existe la categoria por id
+        //si existe la categoria por id  
         bool UnicoUsuario(string usuario);
         Task<UsuarioLoginRespuestaDTO> Login(UsuarioLoginDTO usuarioLoginDTO);
         Task<Usuario> Registro(UsuarioRegistroDTO usuarioRegistroDTO);
