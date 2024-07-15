@@ -274,3 +274,5 @@ C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\obj\Debug\net8.
 C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\obj\Debug\net8.0\ApiPelic.F59BC59D.Up2Date
 C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\obj\Debug\net8.0\ApiPelicula.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\obj\Debug\net8.0\ref\ApiPelicula.dll
+C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\bin\Debug\net8.0\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Lenovo\Desktop\Practica de APIs\ApiPelicula\ApiPelicula\bin\Debug\net8.0\XAct.Core.PCL.dll

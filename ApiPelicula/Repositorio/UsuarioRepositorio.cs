@@ -4,6 +4,7 @@ using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using XSystem.Security.Cryptography;
 
@@ -17,7 +18,7 @@ namespace ApiPelicula.Repositorio
         public UsuarioRepositorio(AplicationDbContext db, IConfiguration confi)
         {
             _db = db;                                                                                                                                   
-            claveSecreta = confi.GetValue<string>("ApiSettings: Secreta");
+            claveSecreta = confi.GetValue<string>("ApiSettings:Secreta");
         }
         public Usuario GetUsuario(int UsuarioId)
         {
@@ -35,9 +36,7 @@ namespace ApiPelicula.Repositorio
             var usuario = _db.Usuario.FirstOrDefault(
                     u => u.NombreUsuario.ToLower() == usuarioLoginDTO.NombreUsuario.ToLower()
                     && u.Password == passwordEncriptado
-                    );
-
-            
+                    ); 
 
             //validamos si el usuario no existe con la convinacion de usuario y contrasena
             if (usuario == null)
@@ -53,13 +52,29 @@ namespace ApiPelicula.Repositorio
             var manejadorToken = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(claveSecreta);
 
-
-            var tokenDescriptor = new SecurityTokenDescriptor()
+            //crear descriptor de token jsonweb token
+            var tokenDescriptor = new SecurityTokenDescriptor() //declarar el token
             {
-
+                //propiedades
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, usuario.NombreUsuario.ToString()),
+                    new Claim(ClaimTypes.Role, usuario.Role)
+                }),
+                //token cuando expira en tiempo utc
+                Expires = DateTime.UtcNow.AddDays(7),
+                //se firma el token
+                SigningCredentials = new(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                
             };
-
-
+            
+            var token = manejadorToken.CreateToken(tokenDescriptor); //crear el token
+            UsuarioLoginRespuestaDTO uuarioLoginRespuestaDTO = new UsuarioLoginRespuestaDTO()
+            {   
+                Token = manejadorToken.WriteToken(token),
+                Usuario = usuario
+            };
+            return uuarioLoginRespuestaDTO;
         }
 
         public async Task<Usuario> Registro(UsuarioRegistroDTO usuarioRegistroDTO)
