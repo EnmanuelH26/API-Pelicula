@@ -2,6 +2,7 @@
 using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -26,6 +27,7 @@ namespace ApiPelicula.Controllers
 
         #region Obtener Usuarios
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //El cliente no posee los permisos necesarios para cierto contenido
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetUsuario()
@@ -46,6 +48,8 @@ namespace ApiPelicula.Controllers
 
         #region Obtener un solo usuario
         [HttpGet("{usuarioId:int}", Name = "GetUsuario")]
+        [Authorize(Roles = "Admin")]
+
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //debera de producir un status code 403
         [ProducesResponseType(StatusCodes.Status200OK)]//debera de producir un status code 200OK
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest

@@ -2,8 +2,10 @@
 using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using XAct.Security;
 
 namespace ApiPelicula.Controllers
 {
@@ -67,7 +69,9 @@ namespace ApiPelicula.Controllers
         #endregion
 
         #region Agregar una Pelicula
+
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(201, Type = typeof(PeliculaDTO))] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status201Created)]//debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -108,6 +112,7 @@ namespace ApiPelicula.Controllers
         #endregion
 
         #region Actualizar pelicula
+        [Authorize(Roles = "Admin")]
 
         [HttpPatch("{peliculaId:int}", Name = "ActualizarPatchPelicula")]
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado
@@ -144,6 +149,7 @@ namespace ApiPelicula.Controllers
         }
         #endregion
         #region Borra categoria
+        [Authorize(Roles = "Admin")]
 
         [HttpDelete("{peliculaId:int}", Name = "BorrarPelicula")]
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado

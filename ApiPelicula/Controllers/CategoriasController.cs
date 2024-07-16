@@ -3,14 +3,17 @@ using ApiPelicula.Model;
 using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using XAct.Security;
 
 namespace ApiPelicula.Controllers
 {
+    //[Authorize(Roles = "Admin")] //para protejer el controlador
     //[Route("api/[controller]")] //opcion estatica
     [Route("api/Categoria")] //opcion estatica
-
+    //[ResponseCache(Duration = 20)] nivel de controlador
     [ApiController]
     public class CategoriasController : ControllerBase
     {
@@ -25,6 +28,7 @@ namespace ApiPelicula.Controllers
         }
         #region Obtener Categoria
         [HttpGet]
+        [ResponseCache(Duration = 20)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //El cliente no posee los permisos necesarios para cierto contenido
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetCategorias()
@@ -45,6 +49,7 @@ namespace ApiPelicula.Controllers
 
         #region Obtener una sola categoria
         [HttpGet("{categoriaId:int}", Name = "GetCategoria")]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true )] //para que no se guarde el cache ni en el servidor ni en el cliente
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //debera de producir un status code 403
         [ProducesResponseType(StatusCodes.Status200OK)]//debera de producir un status code 200OK
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -66,6 +71,7 @@ namespace ApiPelicula.Controllers
         #endregion
 
         #region Agregar una categoria
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status200OK)]//debera de producir un status code 200OK
@@ -107,7 +113,7 @@ namespace ApiPelicula.Controllers
 
         #region Actualizar una sola categoria por Id
 
-        
+        [Authorize(Roles = "Admin")]
         [HttpPatch("{CategoriaId:int}", Name = "ActualizarPatchCategoria")]
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -148,7 +154,7 @@ namespace ApiPelicula.Controllers
 
         #region Actualizar categoria
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("{CategoriaId:int}", Name = "ActualizarPutCategoria")]
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -192,7 +198,7 @@ namespace ApiPelicula.Controllers
         #endregion
 
         #region Borra categoria
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{CategoriaId:int}", Name = "BorrarCategoria")]
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
