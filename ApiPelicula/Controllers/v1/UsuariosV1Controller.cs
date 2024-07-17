@@ -7,21 +7,22 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace ApiPelicula.Controllers
+namespace ApiPelicula.Controllers.v1
 {
     [Route("api/Usuarios")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    [ResponseCache(CacheProfileName = "Defecto20Seg")]
+    public class UsuariosV1Controller : ControllerBase
     {
         //Inyeccion de dependencia
         private readonly IUsuarioRepositorio _usRepo;
         protected RespuestaAPI _respuestaAPI;
         private readonly IMapper _mapper;
-        public UsuariosController(IUsuarioRepositorio usRepo, IMapper mapper)
+        public UsuariosV1Controller(IUsuarioRepositorio usRepo, IMapper mapper)
         {
             _usRepo = usRepo;
             _mapper = mapper;
-            this._respuestaAPI = new();    
+            _respuestaAPI = new();
 
         }
 
@@ -49,7 +50,6 @@ namespace ApiPelicula.Controllers
         #region Obtener un solo usuario
         [HttpGet("{usuarioId:int}", Name = "GetUsuario")]
         [Authorize(Roles = "Admin")]
-
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //debera de producir un status code 403
         [ProducesResponseType(StatusCodes.Status200OK)]//debera de producir un status code 200OK
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -78,14 +78,14 @@ namespace ApiPelicula.Controllers
         public async Task<IActionResult> Registro([FromBody] UsuarioRegistroDTO usuarioRegistroDTO)
         {
 
-            bool validarNombreDeUsuario =  _usRepo.UnicoUsuario(usuarioRegistroDTO.NombreUsuario);
+            bool validarNombreDeUsuario = _usRepo.UnicoUsuario(usuarioRegistroDTO.NombreUsuario);
 
             if (!validarNombreDeUsuario)
             {
-                _respuestaAPI.statusCode = HttpStatusCode.BadRequest;   
+                _respuestaAPI.statusCode = HttpStatusCode.BadRequest;
                 _respuestaAPI.isSuccess = false;
                 _respuestaAPI.ErrorMessages.Add("El nombre de usuario ya existe");
-                 return BadRequest(_respuestaAPI);
+                return BadRequest(_respuestaAPI);
             }
             var usuario = await _usRepo.Registro(usuarioRegistroDTO);
 
@@ -109,10 +109,10 @@ namespace ApiPelicula.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]//debera de producir un status code 404notfound
         public async Task<IActionResult> Login([FromBody] UsuarioLoginDTO UsuarioLoginDTO)
-        {      
+        {
             var respuestaLogin = await _usRepo.Login(UsuarioLoginDTO);
-             
-            if (respuestaLogin.Usuario == null || string.IsNullOrEmpty(respuestaLogin.Token)) 
+
+            if (respuestaLogin.Usuario == null || string.IsNullOrEmpty(respuestaLogin.Token))
             {
                 _respuestaAPI.statusCode = HttpStatusCode.BadRequest;
                 _respuestaAPI.isSuccess = false;

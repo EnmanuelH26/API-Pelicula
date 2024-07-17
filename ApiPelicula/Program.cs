@@ -2,7 +2,9 @@ using ApiPelicula.Data;
 using ApiPelicula.PeliculasMaper;
 using ApiPelicula.Repositorio;
 using ApiPelicula.Repositorio.IRepositorio;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,9 +22,23 @@ builder.Services.AddDbContext<AplicationDbContext>(opciones =>
 
 //soporte para cache
 
-builder.Services.AddResponseCaching();
+var apiVersioning = builder.Services.AddApiVersioning(opcion =>
+{
+    opcion.AssumeDefaultVersionWhenUnspecified = true;
+    opcion.DefaultApiVersion = new ApiVersion(1, 0);
+    opcion.ReportApiVersions = true;
+    //opcion.ApiVersionReader = ApiVersionReader.Combine(
+    //    new QueryStringApiVersionReader("api-version")
+    //    );
+});
 
-
+apiVersioning.AddApiExplorer(
+    opciones =>
+    {
+        opciones.GroupNameFormat = "'v'VVV";
+        opciones.SubstituteApiVersionInUrl = true;
+    }
+    );
 
 
 //Agregamos los repositorios
@@ -31,6 +47,9 @@ builder.Services.AddScoped<IPeliculaRepositorio, PeliculaRepositorio>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 var key = builder.Configuration.GetValue<string>("ApiSettings:Secreta");
+
+//Soporte para versionamiento
+builder.Services.AddApiVersioning();
 
 //Agregamos el automapper
 builder.Services.AddAutoMapper(typeof(PeliculasMaper));
@@ -100,10 +119,42 @@ builder.Services.AddSwaggerGen(options =>
             new List<string>()
         }
     });
-}
-        
-    
-    );
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1.0",
+        Title = "Peliculas Api V1",
+        Description = "Api de Peliculas Versión 1",
+        TermsOfService = new Uri("https://ejemplo.com"),
+        Contact = new OpenApiContact
+        {
+            Name = "render2web",
+            Url = new Uri("https://ejemplo.com")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Licencia Personal",
+            Url = new Uri("https://ejemplo.com")
+        },
+    });
+    options.SwaggerDoc("v2", new OpenApiInfo
+    {
+        Version = "v2.0",
+        Title = "Peliculas Api V2",
+        Description = "Api de Peliculas Versión 2",
+        TermsOfService = new Uri("https://ejemplo.com"),
+        Contact = new OpenApiContact
+        {
+            Name = "render2web",
+            Url = new Uri("https://ejemplo.com")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Licencia Personal",
+            Url = new Uri("https://ejemplo.com")
+        },
+    });
+}    
+);
 
 //soporte dominio
 //se pueden habilitar 1-un dominio  2-multiples dominios, 3- cualquier dominio
@@ -123,7 +174,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(opciones =>
+    {
+        opciones.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiPeliculaV1");
+        opciones.SwaggerEndpoint("/swagger/v2/swagger.json", "ApiPeliculaV2");
+    });
 }
 
 

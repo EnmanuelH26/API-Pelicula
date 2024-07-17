@@ -2,25 +2,27 @@
 using ApiPelicula.Model;
 using ApiPelicula.Model.Dtos;
 using ApiPelicula.Repositorio.IRepositorio;
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using XAct.Security;
 
-namespace ApiPelicula.Controllers
+namespace ApiPelicula.Controllers.v1
 {
     //[Authorize(Roles = "Admin")] //para protejer el controlador
     //[Route("api/[controller]")] //opcion estatica
-    [Route("api/Categoria")] //opcion estatica
+    [Route("api/v{version:Apiversion}/Categoria")] //opcion estatica
     //[ResponseCache(Duration = 20)] nivel de controlador
+    [ApiVersion("1.0")]
     [ApiController]
-    public class CategoriasController : ControllerBase
+    public class CategoriasV1Controller : ControllerBase
     {
         //Inyeccion de dependencia
         private readonly ICategoriaRepositorio _ctRepo;
         private readonly IMapper _mapper;
-        public CategoriasController(ICategoriaRepositorio ctRepo, IMapper mapper)
+        public CategoriasV1Controller(ICategoriaRepositorio ctRepo, IMapper mapper)
         {
             _ctRepo = ctRepo;
             _mapper = mapper;
@@ -28,6 +30,7 @@ namespace ApiPelicula.Controllers
         }
         #region Obtener Categoria
         [HttpGet]
+        //[MapToApiVersion("1.0")]
         [ResponseCache(Duration = 20)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //El cliente no posee los permisos necesarios para cierto contenido
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -42,14 +45,14 @@ namespace ApiPelicula.Controllers
                 ListaCategoriaDto.Add(_mapper.Map<CategoriaDTO>(lista)); //agrega en categoriaDto la lista
             }
             //retorna la lista
-            return Ok(ListaDeCategoria);   
+            return Ok(ListaDeCategoria);
         }
 
         #endregion
 
         #region Obtener una sola categoria
         [HttpGet("{categoriaId:int}", Name = "GetCategoria")]
-        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true )] //para que no se guarde el cache ni en el servidor ni en el cliente
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)] //para que no se guarde el cache ni en el servidor ni en el cliente
         [ProducesResponseType(StatusCodes.Status403Forbidden)] //debera de producir un status code 403
         [ProducesResponseType(StatusCodes.Status200OK)]//debera de producir un status code 200OK
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
@@ -84,7 +87,7 @@ namespace ApiPelicula.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            } 
+            }
             //si es nulo devuelve un badrequest con el model state
             if (ccdto == null)
             {
@@ -99,14 +102,14 @@ namespace ApiPelicula.Controllers
             //instanciamos una variable que mapea categoria con el parametro ccdto 
             var categoria = _mapper.Map<Categoria>(ccdto);
             //valiamos si se pudo guardar
-            if (! _ctRepo.CrearCategoria(categoria)) 
+            if (!_ctRepo.CrearCategoria(categoria))
             {
                 //si no se pudo guardar agregamos un model error 
                 ModelState.AddModelError("", $"Algo salio mal guardando el registro{categoria.NombreCategoria}");
                 return BadRequest(ModelState);
             }
             //Creamos y retornamos al ruta
-            return CreatedAtRoute("GetCategoria", new {categoriaId = categoria.Id}, categoria); 
+            return CreatedAtRoute("GetCategoria", new { categoriaId = categoria.Id }, categoria);
         }
         #endregion
 
@@ -118,7 +121,7 @@ namespace ApiPelicula.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)] //debera de producir un status code 201creado
         [ProducesResponseType(StatusCodes.Status400BadRequest)]//debera de producir un 400BadRequest
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]//debera de producir un status code 401 no autorizado(es con la autorizacion)
-        public IActionResult ActualizarPatchCategoria(int CategoriaId,[FromBody] CategoriaDTO ccdto)
+        public IActionResult ActualizarPatchCategoria(int CategoriaId, [FromBody] CategoriaDTO ccdto)
         {
             //Validamos si el modelo es valido, "si el modelo no es valido retorna modelstate"
             if (!ModelState.IsValid)
@@ -132,7 +135,7 @@ namespace ApiPelicula.Controllers
                 return BadRequest(ModelState);
             }
 
-            
+
 
             //instanciamos una variable que mapea categoria con el parametro ccdto 
             var categoria = _mapper.Map<Categoria>(ccdto);
@@ -173,7 +176,7 @@ namespace ApiPelicula.Controllers
                 return BadRequest(ModelState);
             }
             var categoriaExistente = _ctRepo.GetCategoria(CategoriaId);
-            
+
             if (categoriaExistente == null)
             {
                 return NotFound($"No se encontro la categoria con Id: {CategoriaId}");
@@ -221,7 +224,7 @@ namespace ApiPelicula.Controllers
             {
                 //si no se pudo guardar agregamos un model error 
                 ModelState.AddModelError("", $"Algo salio mal al Borrar el registro{categoriaExistente.NombreCategoria}");
-                return StatusCode(500, ModelState);   
+                return StatusCode(500, ModelState);
             }
 
 

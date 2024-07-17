@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5qmENPImRo7H25QDn1U6yyareaCWZubWDa2mhMEKyPNTWZneDayM9WyKs9IjHDm3mtsC5rxxvT+WFj41oeUEjQ==",
+  "dgSpecHash": "nVYkhBTuE1yGbuHPQRVLOCGDACQdGcIesuY3iipt0gGPQsrJSyewybuAg8tykgCowQBgfqgqD4IHQb8jwbsUaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Practica de APIs\\ApiPelicula\\ApiPelicula\\ApiPelicula.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\asp.versioning.mvc\\8.1.0\\asp.versioning.mvc.8.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.1.0\\asp.versioning.mvc.apiexplorer.8.1.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
